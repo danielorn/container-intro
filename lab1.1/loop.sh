@@ -1,0 +1,1 @@
+while true; do echo "Hello $NAME from loop.sh"; sleep 1; done
