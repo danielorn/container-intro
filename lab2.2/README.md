@@ -39,7 +39,7 @@ web-6747cfd444-2z285   1/1     Running   0          2d20h   10.244.1.6   docker-
 
 ## Expose the application using a service
 
-Since pods are short lived and can come and go based on demand, exposin their IP's to the outside world is not a good idea. Instead a service can be used to expose a group of pods (for example the ones in a deployment). The service will automatically load balance across the available pods
+Since pods are short lived and can come and go based on demand, exposing their IP's to the outside world is not a good idea. Instead a service can be used to expose a group of pods (for example the ones in a deployment). The service will automatically load balance across the available pods
 
 ```
 kubectl apply -f service.yaml

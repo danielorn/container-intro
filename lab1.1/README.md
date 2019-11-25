@@ -51,7 +51,7 @@ docker run -d --name mycontainer my-image
 The above command takes the image `my-image` and starts a new container with name `mycontainer`
 By default the shell will follow the output of the container but as we are adding the flag `-d` it will start in detached mode in the background.
 
-### See running containers
+### List all docker containers currently running
 ```
 docker ps
 ```
@@ -61,11 +61,6 @@ docker ps
 docker logs mycontainer
 ```
 The above command views the logs of the container called `mycontainer`
-
-### List all docker containers currently running
-```
-docker ps
-```
 
 ### Execute a shell in a running container
 ```
@@ -90,7 +85,7 @@ To exit the container type `exit`
 
 ### Run a docker container and inject environment variables
 ```
-docker run --name containerWithEnv -e NAME=John -e my-image
+docker run -d --name containerWithEnv -e NAME=John my-image
 ```
 The above command will start a container from  image `my-image` with name `containerWithEnv` and set the environment variable `NAME` to John.
 
@@ -102,7 +97,7 @@ Injecting environment variables is a great way to pass environmental configurati
 
 ### Run a docker container and mount a volume
 ```
-docker run --name containerWithVolume -v /c/Users:/users my-image
+docker run -d --name containerWithVolume -v /c/Users:/users my-image
 ```
 The above command will start a container from  image `my-image` with name `containerWithVolume` and make the folder C:\Users available under /users
 

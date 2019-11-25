@@ -25,7 +25,7 @@ spec:
         image: web:v1
         env:
         - name: NAME
-          value: "My Cool Application2"
+          value: "My Cool Application"
         - name: STARTUP_DELAY
           value: "20"
         ports:

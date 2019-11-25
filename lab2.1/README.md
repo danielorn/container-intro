@@ -15,11 +15,11 @@ The application will print a title saying "Hello from $NAME", where $NAME is an 
 The Dockerfile is simple, it baselines on a publicly available image for php running on top of apache. Since the bae image contains all necessary setup we just need to copy our `www` folder into the designated location in the image, which is `/var/www/html`
 
 ```
-FROM php:7.2-apache        # Baseline on php image
-COPY www/ /var/www/html/   # Copy custom html
-COPY start.sh /start.sh    # Custom Startup script
-RUN chmod +x /start.sh     # Make custom startup script executable
-CMD ["/start.sh"]          # Set startup script
+FROM php:7.2-apache
+COPY www/ /var/www/html/
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
 ```
 
 ## Build docker image
