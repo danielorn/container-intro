@@ -115,7 +115,7 @@ tmpfs            64M     0   64M   0% /dev
 
 ### Kill a running container
 ```
-docker kill <NAME>
+docker stop <NAME>
 ```
 
 ### Remove an image from the local repository
