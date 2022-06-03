@@ -5,7 +5,7 @@ This is a very simple php application packaged as a docker image
 
 The application itself consists of only one file, `index.php`, which can be found in the `www`folder.
 
-The application will print a title saying "Hello from $NAME", where $NAME is an envrionment variable. It will also print it's IP:
+The application will print a title saying "Hello from $NAME", where $NAME is an environment variable. It will also print it's IP:
 
 ```
 <h1>Hello from <?php print $_ENV['NAME'] ?></h1>
@@ -25,15 +25,15 @@ CMD ["/start.sh"]
 ## Build docker image
 
 ```
-docker build -t web:v1 .
+nerdctl build --namespace k8s.io -t web:v1 .
 ```
 
 ## Test the image locally
 
-The follwoing command will launch our image as a container, passing in "My Cool Application"  as the environment variable `NAME` and binding port 1024 on the host machine to 80 inside the container.
+The following command will launch our image as a container, passing in "My Cool Application"  as the environment variable `NAME` and binding port 1024 on the host machine to 80 inside the container.
 
 ```
-docker run -d --name web -p 1024:80 -e NAME="My Cool Application" web:v1
+nerdctl run --namespace k8s.io -d --name web -p 1024:80 -e NAME="My Cool Application" web:v1
 ``` 
 
 The app can be viewed in a web browser by visiting http://localhost:1024
