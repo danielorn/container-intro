@@ -11,18 +11,26 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 ## Step 3: Install the WSL2 Linux kernel package
 Download and run the [WSL2 Linux kernel update package for x64 machines](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+It can also be installed by running the following command in a powershell prompt
+
+```powershell
+Invoke-WebRequest -Uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -OutFile wsl_update_x64.msi -UseBasicParsing
+Start-Process msiexec.exe -Wait -ArgumentList "/I $((Get-Location).Path)\wsl_update_x64.msi /quiet"
+```
 
 ## Step 4: Install Rancher Desktop
 Download and install Rancher Desktop from [rancherdesktop.io](https://rancherdesktop.io/)
-At the end of the installation, uncheck the box that says "Launch Rancher" (Launching will fail if step 5 is not completed first)
 
-## Step 5: Configure Rancher Desktop
-Open the file `%USERPROFILE%\AppData\Roaming\rancher-desktop\settings.json` in a text editor and make sure the setting `experimentalHostResolver` is set to `true`
+## Step 5: Launch Rancher Desktop
+Start Rancher dektop. The first time this will take some time as it downloads and configures dependencies. If the process fails or hangs, please proceed to the next step
 
-## Step 6: Launch Rancher Desktop
-Launch rancher Desktop from the start menu or from the desktop icon. This typically takes a few minutes.
+## Step 6: Configure Rancher Desktop
+Close rancher desktop (make sure to exit it fully by right clicking on the icon in the activity field and select "Quit Rancher Desktop" and not just closing the window). Open the file `%USERPROFILE%\AppData\Roaming\rancher-desktop\settings.json` in a text editor and make sure the setting `experimentalHostResolver` is set to `true`
 
-## Step 6: Verify Installation
+## Step 7: Launch Rancher Desktop
+Launch rancher Desktop from the start menu or from the desktop icon.
+
+## Step 8: Verify Installation
 
 1. Run the command `kubectl get pods` in a terminal. The output should be similar to below
    ```
