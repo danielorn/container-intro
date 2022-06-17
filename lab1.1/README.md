@@ -36,35 +36,35 @@ done
 ### Build a docker container
 Run the following command to build the container using the manifest in the docker file. the -t tag gives the built image a name
 ```
-nerdctl build -t my-image .
+docker build -t my-image .
 ```
 
 ### List all images currently in the local repository
 ```
-nerdctl images
+docker images
 ```
 
 ### Run a docker container
 ```
-nerdctl run -d --name mycontainer my-image
+docker run -d --name mycontainer my-image
 ```
 The above command takes the image `my-image` and starts a new container with name `mycontainer`
 By default the shell will follow the output of the container but as we are adding the flag `-d` it will start in detached mode in the background.
 
 ### List all docker containers currently running
 ```
-nerdctl ps
+docker ps
 ```
 
 ### View the logs of a container
 ```
-nerdctl logs mycontainer
+docker logs mycontainer
 ```
 The above command views the logs of the container called `mycontainer`
 
 ### Execute a shell in a running container
 ```
-nerdctl exec -it mycontainer /bin/bash
+docker exec -it mycontainer /bin/bash
 ```
 The above command will connect to the running container with name `mycontainer` and launch the program `/bin/bash`. This is a great tool for troubleshooting and for viewing how it looks inside a container.
 
@@ -85,23 +85,23 @@ To exit the container type `exit`
 
 ### Run a docker container and inject environment variables
 ```
-nerdctl run -d --name containerWithEnv -e NAME=John my-image
+docker run -d --name containerWithEnv -e NAME=John my-image
 ```
 The above command will start a container from  image `my-image` with name `containerWithEnv` and set the environment variable `NAME` to John.
 
-You can verify this by executing a shell in the running container with `nerdctl exec -it containerWithEnv /bin/bash` and in that shell running `echo $NAME`
+You can verify this by executing a shell in the running container with `docker exec -it containerWithEnv /bin/bash` and in that shell running `echo $NAME`
 
-You can also view the log output of the container using `nerdctl logs containerWithEnv`. The bash script running will see that the `$NAME` variable is set and use that in its output.
+You can also view the log output of the container using `docker logs containerWithEnv`. The bash script running will see that the `$NAME` variable is set and use that in its output.
 
 Injecting environment variables is a great way to pass environmental configuration into the container at launch. This way endpoints, password etc can be kept outside of a generic image which can work everywhere from local development environments to live production environments.
 
 ### Run a docker container and mount a volume
 ```
-nerdctl run -d --name containerWithVolume -v C:\Users:/users my-image
+docker run -d --name containerWithVolume -v C:\Users:/users my-image
 ```
 The above command will start a container from  image `my-image` with name `containerWithVolume` and make the folder C:\Users available under /users
 
-You can verify this by executing a shell in the running container with `nerdctl exec -it containerWithVolume /bin/bash` and in that shell navigate to /users
+You can verify this by executing a shell in the running container with `docker exec -it containerWithVolume /bin/bash` and in that shell navigate to /users
 
 You can also run `df -h` inside a shell in the container, that will give the following output
 ```
@@ -115,10 +115,10 @@ tmpfs            64M     0   64M   0% /dev
 
 ### Kill a running container
 ```
-nerdctl stop <NAME>
+docker stop <NAME>
 ```
 
 ### Remove an image from the local repository
 ```
-nerdctl rm <NAME>
+docker rm <NAME>
 ```

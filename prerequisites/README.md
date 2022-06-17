@@ -25,7 +25,9 @@ Download and install Rancher Desktop from [rancherdesktop.io](https://rancherdes
 Start Rancher dektop. The first time this will take some time as it downloads and configures dependencies. If the process fails or hangs, please proceed to the next step
 
 ## Step 6: Configure Rancher Desktop
-Close rancher desktop (make sure to exit it fully by right clicking on the icon in the activity field and select "Quit Rancher Desktop" and not just closing the window). Open the file `%USERPROFILE%\AppData\Roaming\rancher-desktop\settings.json` in a text editor and make sure the setting `experimentalHostResolver` is set to `true`
+Close rancher desktop (make sure to exit it fully by right clicking on the icon in the activity field and select "Quit Rancher Desktop" and not just closing the window). Open the file `%USERPROFILE%\AppData\Roaming\rancher-desktop\settings.json` in a text editor and make sure that
+- `experimentalHostResolver` is set to `true`
+- `containerEngine` is set to `moby`
 
 ## Step 7: Launch Rancher Desktop
 Launch rancher Desktop from the start menu or from the desktop icon.
@@ -36,7 +38,7 @@ Launch rancher Desktop from the start menu or from the desktop icon.
    ```
     No resources found in default namespace.
    ```
-2. Run the command `nerdctl run hello-world:latest` in a terminal. The output should be similar to below
+2. Run the command `docker run hello-world:latest` in a terminal. The output should be similar to below
     ```
     Hello from Docker!
     This message shows that your installation appears to be working correctly.

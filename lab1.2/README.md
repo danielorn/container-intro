@@ -18,12 +18,12 @@ EXPOSE 80
 
 Build the image with the following command
 ```
-nerdctl build -t apache base/
+docker build -t apache base/
 ```
 
 Start the base image using the following command
 ```
-nerdctl run --name apache2 -d -p 1980:80 apache
+docker run --name apache2 -d -p 1980:80 apache
 ```
 
 The `-p` flag tells docker to forward local port `1980` to container port `80`.
@@ -31,7 +31,7 @@ Thus you should be able to browse [http://localhost:1980](http://localhost:1980)
 
 Stop the apache2 container using the following command
 ```
-nerdctl stop apache2 && nerdctl rm apache2
+docker stop apache2 && docker rm apache2
 ```
 
 ## Creating the app ##
@@ -44,16 +44,16 @@ COPY index.html /var/www/html
 
 Build the image with the following command
 ```
-nerdctl build -t web app/
+docker build -t web app/
 ```
 Start the base image using the following command
 ```
-nerdctl run --name web -d -p 1980:80 web
+docker run --name web -d -p 1980:80 web
 ```
 
 [http://localhost:1980](http://localhost:1980) Should now give you a custom "hello world" page.
 
 Stop the web container using the following command
 ```
-nerdctl stop web && nerdctl rm web
+docker stop web && docker rm web
 ```
