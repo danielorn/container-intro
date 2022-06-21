@@ -14,7 +14,7 @@ readinessProbe:
 ```
 The readiness  probe is of type httpGet, which means it will make a http request to the specified path and port every 5 seconds (periodSeconds). Once the HTTP requests returns 200 the probe will deem the container ready to receive traffic and the pod can be added to the service.
 
-The `deployment.yaml` also sets and environment variable on the container called `STARTUP_DELAY`. This is an artifical delay added to the startup script. When a new pods is created it will take STARTUP_DELAY number of seconds before the application is ready. Set it to a value (20-30) so that you have the chance to observe how pods shift from not ready to ready.
+The `deployment.yaml` also sets and environment variable on the container called `STARTUP_DELAY`. This is an artificial delay added to the startup script. When a new pods is created it will take `STARTUP_DELAY` number of seconds before the application is ready. Set it to a value (20-30) so that you have the chance to observe how pods shift from not ready to ready.
 
 **Apply the service**
 ```
@@ -33,7 +33,7 @@ NAME                   READY   STATUS      RESTARTS   AGE
 web-76b7b5bc56-dp6hg   0/1     Running     0          10s
 ```
 
-This means that the container inside the pod is not ready and the pod is thus not addd to the service and will not receive any traffic.
+This means that the container inside the pod is not ready and the pod is thus not added to the service and will not receive any traffic.
 
 As soon as the application is fully started the readiness probe will return HTTP 200 and the pod will be added to the service
 

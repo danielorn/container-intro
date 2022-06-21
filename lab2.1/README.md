@@ -25,7 +25,7 @@ CMD ["/start.sh"]
 ## Build docker image
 
 ```
-docker build --namespace k8s.io -t web:v1 .
+docker build -t web:v1 .
 ```
 
 ## Test the image locally
@@ -33,7 +33,7 @@ docker build --namespace k8s.io -t web:v1 .
 The following command will launch our image as a container, passing in "My Cool Application"  as the environment variable `NAME` and binding port 1024 on the host machine to 80 inside the container.
 
 ```
-docker run --namespace k8s.io -d --name web -p 1024:80 -e NAME="My Cool Application" web:v1
+docker run -d --name web -p 1024:80 -e NAME="My Cool Application" web:v1
 ``` 
 
 The app can be viewed in a web browser by visiting http://localhost:1024

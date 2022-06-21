@@ -52,11 +52,11 @@ kubernetes    ClusterIP      10.0.0.1       <none>          443/TCP          2d2
 web-service   LoadBalancer   10.0.216.170   localhost   8080:31811/TCP   2d20h
 ```
 
-By entering the http://localhost:8080 in a web browser we can view our applications
+By entering http://<EXTERNAL-IP>:8080 in a web browser we can view our applications
 
 ## Scale the application up
 
-It is posible to scale the number of pods in a deployment in and out. Kubernetes can even be configured to do that automatically to handle load variations in a cost optimal way
+It is possible to scale the number of pods in a deployment in and out. Kubernetes can even be configured to do that automatically to handle load variations in a cost optimal way
 
 The following command scales out the `web` deployment to 4 pods
 
